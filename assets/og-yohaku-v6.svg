@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f1eadc"/>
+  <rect x="70" y="70" width="1060" height="490" fill="none" stroke="#1f1a16" stroke-opacity=".25"/>
+  <text x="105" y="155" font-family="serif" font-size="32" fill="#983c2f" letter-spacing="8">履歴書の余白</text>
+  <text x="105" y="295" font-family="serif" font-size="54" fill="#1f1a16" font-weight="700">外では言えないことを、</text>
+  <text x="105" y="370" font-family="serif" font-size="54" fill="#1f1a16" font-weight="700">ここに置いていく。</text>
+  <text x="108" y="465" font-family="sans-serif" font-size="25" fill="#695d51">空白、しくじり、焦り、再起。履歴書には書けない人生の記録。</text>
+</svg>
