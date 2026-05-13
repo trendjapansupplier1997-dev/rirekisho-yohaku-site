@@ -80,4 +80,14 @@
     <loc>https://rirekisho-yohaku.pages.dev/my-yohaku/job-hunt-self-inventory/</loc>
     <lastmod>2026-05-13</lastmod>
   </url>
+  <url>
+    <loc>https://rirekisho-yohaku.pages.dev/my-yohaku/qualification-field-ai-next-stage/</loc>
+    <lastmod>2026-05-13</lastmod>
+  </url>
+  <url>
+    <loc>https://rirekisho-yohaku.pages.dev/my-yohaku/yohaku-to-someones-choice/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
