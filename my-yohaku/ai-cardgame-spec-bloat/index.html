@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>AIに任せれば作れるはずが、仕様だけが膨らんでいった｜カードゲーム開発と仕様膨張の記録</title>
+<meta content="Javaで作った小さなブラックジャックの成功体験から、AIに頼ればカードゲームサイトも作れるはずだと思った。けれど、仕様は膨らみ、環境は変わり、デバッグは一歩進んで二歩下がるようになっていった記録。" name="description"/>
+<meta content="index,follow,max-image-preview:large" name="robots"/>
+<link href="https://rirekisho-yohaku.pages.dev/my-yohaku/ai-cardgame-spec-bloat/" rel="canonical"/>
+<meta content="#f1eadc" name="theme-color"/><link href="/assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="article" property="og:type"/>
+<meta content="https://rirekisho-yohaku.pages.dev/my-yohaku/ai-cardgame-spec-bloat/" property="og:url"/>
+<meta content="履歴書の余白" property="og:site_name"/>
+<meta content="AIに任せれば作れるはずが、仕様だけが膨らんでいった｜カードゲーム開発と仕様膨張の記録" property="og:title"/>
+<meta content="Javaで作った小さなブラックジャックの成功体験から、AIに頼ればカードゲームサイトも作れるはずだと思った。けれど、仕様は膨らみ、環境は変わり、デバッグは一歩進んで二歩下がるようになっていった記録。" property="og:description"/>
+<meta content="https://rirekisho-yohaku.pages.dev/assets/og-yohaku-v6.svg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&amp;family=Shippori+Mincho+B1:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="/assets/yohaku-v6.css?v=270" rel="stylesheet"/>
+<link href="/assets/article.css?v=270" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AIに任せれば作れるはずが、仕様だけが膨らんでいった", "description": "Javaで作った小さなブラックジャックの成功体験から、AIに頼ればカードゲームサイトも作れるはずだと思った。けれど、仕様は膨らみ、環境は変わり、デバッグは一歩進んで二歩下がるようになっていった記録。", "author": {"@type": "Person", "name": "秋山太一"}, "publisher": {"@type": "Organization", "name": "履歴書の余白"}, "inLanguage": "ja", "mainEntityOfPage": {"@type": "WebPage", "@id": "https://rirekisho-yohaku.pages.dev/my-yohaku/ai-cardgame-spec-bloat/"}}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">本文へ移動</a>
+<header class="site-header"><div class="container header-row"><a aria-label="履歴書の余白 ホーム" class="brand" href="/"><span class="brand-main">履歴書の<span>余白</span></span><span class="brand-sub">外では言えない時間の記録</span></a><nav aria-label="主要ナビゲーション" class="nav"><a href="/#about">はじめに</a><a href="/#read">読む</a><a href="/#doors">入口</a><a href="/#post">吐き出す</a></nav></div></header>
+<main class="story-main" id="main">
+<div class="article-shell breadcrumb"><a href="/my-yohaku/crypto-loss-unreal-numbers/">前の記事へ</a></div>
+<nav aria-label="連載目次" class="chapter-rail"><p>連載目次</p><a class="" href="/my-yohaku/osaka-university-nanimono/"><span>01 前編</span><strong>大阪大学に入ったのに、僕は何者にもなれなかった</strong></a><a class="" href="/my-yohaku/osaka-university-period-worker/"><span>01 後編</span><strong>親が部屋に来た日、僕は大阪を出ることにした</strong></a><a class="" href="/my-yohaku/aichi-hikikomori-nothing-fun/"><span>02 前編</span><strong>遊び尽くすつもりだったのに、何も楽しくなかった</strong></a><a class="" href="/my-yohaku/aichi-hikikomori-time-melted/"><span>02 後編</span><strong>時間はあるのに、何も残らなかった</strong></a><a class="" href="/my-yohaku/printer-sedori-dead-stock/"><span>03 前編</span><strong>せどりで人生を変えるはずが、不良在庫だけが積み上がった</strong></a><a class="" href="/my-yohaku/printer-sedori-room-collapse/"><span>03 後編</span><strong>部屋が倉庫になり、生活も沈んでいった</strong></a><a class="" href="/my-yohaku/net-cafe-boki-restart/"><span>04</span><strong>家なしの時間を経て、資格で立て直すことにした</strong></a><a class="" href="/my-yohaku/accounting-office-reality/"><span>05</span><strong>簿記で立て直すはずが、会計事務所の現実にぶつかった</strong></a><a class="" href="/my-yohaku/electric-vocational-training/"><span>06</span><strong>会計事務所を辞めて、電気の職業訓練校へ向かった</strong></a><a class="" href="/my-yohaku/renewable-energy-tokyo-first-site/"><span>07</span><strong>東京本社という響きに、もう一度上流へ戻れる気がした</strong></a><a class="" href="/my-yohaku/renewable-energy-workload/"><span>08</span><strong>信頼されるほど、仕事は重くなっていった</strong></a><a class="" href="/my-yohaku/renewable-energy-inner-anger/"><span>09</span><strong>良い人でいようとしすぎて、内側だけが荒れていった</strong></a><a class="" href="/my-yohaku/renewable-energy-accident-large-project/"><span>10</span><strong>事故と大型案件が、退職の輪郭を濃くした</strong></a><a class="" href="/my-yohaku/renewable-energy-leaving-tokyo/"><span>11</span><strong>半ば逃げるように、東京を離れた</strong></a><a class="" href="/my-yohaku/tochigi-it-school-rest/"><span>12</span><strong>休むために、栃木のIT専門校へ向かった</strong></a><a class="" href="/my-yohaku/tochigi-qualifications-programming/"><span>13</span><strong>休みながら、資格とプログラミングを積み上げた</strong></a><a class="" href="/my-yohaku/crypto-loss-unreal-numbers/"><span>14</span><strong>仮想通貨で増えた数字が、現実感のないまま溶けていった</strong></a><a aria-current="page" class="current" href="/my-yohaku/ai-cardgame-spec-bloat/"><span>15</span><strong>AIに任せれば作れるはずが、仕様だけが膨らんでいった</strong></a><div class="is-soon"><span>16 予告</span><strong>応募書類を書きながら、過去を棚卸ししていった</strong><em>準備中</em></div></nav>
+<section class="article-hero"><div class="article-shell"><p class="article-kicker">MY YOHAKU / FIFTEENTH STORY</p><h1 class="article-title">AIに任せれば作れるはずが、仕様だけが膨らんでいった</h1><p class="article-subtitle">AIがあれば、自分でも何かを作れるかもしれない。Javaで作った小さなブラックジャックの成功体験は、カードゲームサイト構想へ膨らんでいった。けれど、仕様が増えるほど完成は遠くなった。</p><div class="article-meta-row"><span>私の余白</span><span>AI活用</span><span>カードゲーム開発</span><span>仕様膨張</span><span>デバッグ</span><span>副業構想</span></div></div></section>
+<article class="article-body"><div class="article-shell">
+<div class="opening"><p>Javaの授業で作ったブラックジャックは、本当に小さな作品だった。</p><p>画面も、機能も、今見ればかなり素朴だったと思う。</p><p>でも、自分の手元でカードが配られ、数字が動き、勝敗が決まる。</p><p>それだけで、かなり嬉しかった。</p><p>大学を中退し、愛知で沈み、せどりで崩れ、会計事務所で削られ、再エネの現場で消耗してきた後だった。</p><p>それでも、自分の頭で何かを組み立てられる。</p><p>そう感じられたことは、思っていた以上に大きかった。</p><p>しかも、隣にはAIがいた。</p><p>Copilotに聞けば、次に何を書けばいいか返ってくる。</p><p>エラーも相談できる。</p><p>仕様も一緒に考えられる。</p><p>もしかすると、これはかなり大きな武器になるのではないか。</p><p>仮想通貨で減った分を、別の形で取り返したい気持ちもあった。</p><p>カードゲームを作って、サイトにして、広告やアフィリエイトにつなげられないか。</p><p>そんな構想が、少しずつ膨らんでいった。</p><p>最初は、作れる気がしていた。</p><p>でも、作れる気がすることと、作り切れることは、まったく違った。</p></div>
+<h2>小さな成功体験は、すぐに大きな構想へ変わった</h2>
+<p>ブラックジャックが動いた時、単純に楽しかった。</p>
+<p>カードゲームはルールがはっきりしている。</p>
+<p>勝敗がある。</p>
+<p>数字がある。</p>
+<p>UIも作りやすそうに見える。</p>
+<p>それに、子どもの頃からゲームやカードゲームにはどこか惹かれていた。</p>
+<p>運だけではない。</p>
+<p>でも、完全な実力勝負でもない。</p>
+<p>限られた手札の中で、どう選ぶか。</p>
+<p>その感じが、自分の人生の選択にも少し似ていた。</p>
+<p>だから、ただの授業課題で終わらせるのが惜しくなった。</p>
+<p>もっと作れるのではないか。</p>
+<p>ブラックジャックだけでなく、別のカードゲームも作れるのではないか。</p>
+<p>ゲームごとに攻略記事を書けば、検索から人が来るかもしれない。</p>
+<p>広告も貼れるかもしれない。</p>
+<p>ゲーム系のASPやエンタメ系の広告につなげられるかもしれない。</p>
+<p>仮想通貨で減った資産を、何か別の形で少しでも回収できるかもしれない。</p>
+<p>そうやって、小さな成功体験は、すぐに大きな構想へ変わっていった。</p>
+<h2>AIに聞けば、何でも前に進む気がした</h2>
+<p>当時の自分にとって、AIはかなり魅力的だった。</p>
+<p>分からないことを聞けば返ってくる。</p>
+<p>コードを書いてくれる。</p>
+<p>設計の相談にも乗ってくれる。</p>
+<p>エラー文を貼れば、原因らしきものを説明してくれる。</p>
+<p>今までなら一人で詰まっていたところに、誰かが横にいるような感じがあった。</p>
+<p>もちろん、その誰かは人間ではない。</p>
+<p>でも、孤独に開発している側からすると、それだけでも大きかった。</p>
+<p>会計事務所でも、再エネの会社でも、分からないことを聞ける相手が十分にいるとは限らなかった。</p>
+<p>相手の機嫌もある。</p>
+<p>忙しさもある。</p>
+<p>こんなことを聞いていいのかという遠慮もある。</p>
+<p>AIには、それがない。</p>
+<p>何度聞いても怒らない。</p>
+<p>雑に聞いても、何かしら返ってくる。</p>
+<p>その気楽さは、かなり危険なほど心地よかった。</p>
+<p>だから僕は、だんだんAIに任せれば作れるはずだと思うようになっていった。</p>
+<h2>EclipseからVSCodeへ移った頃から、景色が変わった</h2>
+<p>授業課題の範囲では、開発環境もある程度決まっていた。</p>
+<p>教わる内容も、作るものも、複雑すぎなかった。</p>
+<p>でも、本格的に自分のものとして作ろうとすると、景色が変わる。</p>
+<p>Eclipseで作った小さな作品を、そのまま膨らませればいいわけではなかった。</p>
+<p>VSCodeを使ってみる。</p>
+<p>フォルダ構成を考える。</p>
+<p>ファイルを分ける。</p>
+<p>フロントエンドとバックエンドを意識する。</p>
+<p>状態管理、ルール判定、画面表示、履歴、演出、テスト。</p>
+<p>最初は一つの課題だったものが、いつの間にか小さなプロダクトのようになっていく。</p>
+<p>すると、急に自分の中の地図が足りなくなる。</p>
+<p>AIは道を提案してくれる。</p>
+<p>でも、全体の地図を持っているわけではない。</p>
+<p>どの道を選ぶのか。</p>
+<p>何を削るのか。</p>
+<p>どこまで作るのか。</p>
+<p>それを決めるのは、結局自分だった。</p>
+<h2>仕様は、増やすより削る方が難しかった</h2>
+<p>カードゲームを作るなら、あれも入れたい。</p>
+<p>この演出も欲しい。</p>
+<p>履歴も見せたい。</p>
+<p>CPUの思考も自然にしたい。</p>
+<p>スマホでも遊びやすくしたい。</p>
+<p>将来は別のゲームも追加したい。</p>
+<p>そう考え始めると、仕様は簡単に膨らむ。</p>
+<p>AIに相談すると、もっともらしい提案が返ってくる。</p>
+<p>それいいな、と思う。</p>
+<p>さらに足す。</p>
+<p>また相談する。</p>
+<p>また足す。</p>
+<p>気づけば、最初のブラックジャックとは別物になっている。</p>
+<p>でも、仕様が増えるほど、完成は遠くなる。</p>
+<p>作りたいものが具体化したようで、実際には輪郭がぼやけていく。</p>
+<p>何を最小単位として完成と呼ぶのか。</p>
+<p>どこまでできれば公開していいのか。</p>
+<p>その線引きができないまま、僕は機能を足していった。</p>
+<p>今振り返ると、仕様を増やすことより、削ることの方がずっと難しかった。</p>
+<h2>一歩進んで、二歩下がるようなデバッグ</h2>
+<p>開発が進むほど、エラーも増えた。</p>
+<p>一つ直す。</p>
+<p>別のところが壊れる。</p>
+<p>表示は直ったのに、ルール判定がおかしくなる。</p>
+<p>ルール判定を直すと、今度は画面の状態がずれる。</p>
+<p>AIに聞く。</p>
+<p>修正案が返ってくる。</p>
+<p>それを入れる。</p>
+<p>動く。</p>
+<p>でも、別のケースで壊れる。</p>
+<p>まるで一歩進んで、二歩下がるようだった。</p>
+<p>もちろん、これはAIだけのせいではない。</p>
+<p>むしろ、原因は自分の設計の甘さにあった。</p>
+<p>どこが正で、どこが派生なのか。</p>
+<p>どこに責務を持たせるのか。</p>
+<p>どの状態を信用するのか。</p>
+<p>そこが曖昧なまま作ると、AIはその曖昧さを拡張してしまう。</p>
+<p>AIは便利だ。</p>
+<p>でも、便利な道具ほど、使う人間の曖昧さも増幅する。</p>
+<h2>AIは魔法ではなく、問いを映す鏡だった</h2>
+<p>この頃、僕は少しずつ分かり始めた。</p>
+<p>AIは、何でも勝手に完成させてくれる魔法ではない。</p>
+<p>むしろ、自分の問いの粗さをそのまま映す鏡に近い。</p>
+<p>何を作りたいのかが曖昧なら、返ってくる答えもどこか曖昧になる。</p>
+<p>責務の分け方が曖昧なら、修正も場当たり的になる。</p>
+<p>完成の定義が曖昧なら、いつまでも終わらない。</p>
+<p>AIに任せているつもりで、実際には自分の設計不足から目をそらしていただけの場面もあった。</p>
+<p>それでも、AIを使うこと自体が間違いだったとは思わない。</p>
+<p>一人では調べきれなかったことに触れられた。</p>
+<p>コードの考え方も、設計の言葉も、以前よりは見えるようになった。</p>
+<p>ただ、AIを使えば楽に作れるという期待は、少しずつ崩れていった。</p>
+<p>AIを使うほど、人間側の判断が必要になる。</p>
+<p>それが、思っていたよりずっと重かった。</p>
+<h2>それでも、何かを作ろうとしていた自分は嫌いではない</h2>
+<p>仮想通貨の含み損を抱えながら、カードゲーム開発に向かっていた自分には、焦りがあった。</p>
+<p>取り返したい気持ちがあった。</p>
+<p>何者かになりたい気持ちもあった。</p>
+<p>だから、きれいな挑戦だったとは言い切れない。</p>
+<p>でも、何かを作ろうとしていた自分まで否定したくはない。</p>
+<p>愛知で配信やゲームを見て時間を溶かしていた頃とは違う。</p>
+<p>せどりで不良在庫を積み上げていた頃とも違う。</p>
+<p>そこには、少なくとも手を動かして、理解しようとして、形にしようとする時間があった。</p>
+<p>うまくいかなかった部分は多い。</p>
+<p>仕様は膨らんだ。</p>
+<p>デバッグにも疲れた。</p>
+<p>完成から遠ざかる感覚もあった。</p>
+<p>それでも、AIと向き合いながら何かを作ろうとした経験は、その後の転職活動でも効いてくる。</p>
+<p>応募書類を書く時。</p>
+<p>過去の経歴を棚卸しする時。</p>
+<p>メールを書く時。</p>
+<p>自分が何をしてきたのかを言葉にする時。</p>
+<p>AIは、コードだけでなく、自分の過去を整理する道具にもなり始めていた。</p>
+<div class="article-continue is-pending"><span class="label">次に読む / 準備中</span><span class="next-title">応募書類を書きながら、過去を棚卸ししていった</span><p>電験二種の合格通知をきっかけに始めた転職活動。エージェント面談、職務経歴書、メール対応を通じて、AIに過去の棚卸しを手伝ってもらうようになる。</p><span class="continue-arrow is-muted">準備中</span></div>
+</div></article>
+</main>
+<footer class="footer"><div class="container footer-row"><div><strong>履歴書の余白</strong><p>履歴書には書けない空白、しくじり、再起の記録。</p></div><nav aria-label="フッターナビゲーション"><a href="/#about">はじめに</a><a href="/#read">読む</a><a href="/#doors">入口</a><a href="/#post">吐き出す</a></nav></div></footer>
+<script defer="" src="/assets/yohaku-v6.js?v=270"></script>
+</body>
+</html>
