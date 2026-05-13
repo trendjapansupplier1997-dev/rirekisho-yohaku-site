@@ -403,3 +403,9 @@ h1{
   .mood-grid,.door-grid{grid-template-columns:1fr}
   .footer-row{display:grid}
 }
+
+
+/* v1.21.1: editorial notes are separated from personal story chapters */
+.editorial-section{background:rgba(255,249,236,.34);border-top:1px solid var(--line)}
+.section-lead{max-width:760px;color:var(--muted);line-height:1.9;margin:0 0 24px}
+.compact-list{border-top:1px solid var(--line)}
