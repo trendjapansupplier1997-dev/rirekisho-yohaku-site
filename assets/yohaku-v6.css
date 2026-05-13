@@ -493,3 +493,9 @@ h1{
   .series-group summary{padding:15px}
   .series-links a{grid-template-columns:54px minmax(0,1fr);padding:13px 15px}
 }
+
+/* v1.23: essays / thinking notes */
+.essay-section{background:linear-gradient(180deg,rgba(255,249,236,.76),rgba(244,237,222,.52));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.essay-section .title-row span{color:var(--red)}
+.essay-section .compact-list a{background:rgba(255,255,255,.56)}
+.essay-section .compact-list a:hover{background:#fffaf0}
