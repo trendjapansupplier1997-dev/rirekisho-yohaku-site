@@ -107,3 +107,27 @@ main.story-main > .chapter-rail strong{
 main.story-main > .chapter-rail span{
   color:#983c2f;
 }
+
+
+/* v1.5: chapter rail scroll area */
+@media (min-width: 1050px){
+  main.story-main > .chapter-rail{
+    max-height:min(480px,calc(100vh - 126px));
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    scrollbar-gutter:stable;
+    padding-right:10px;
+  }
+  main.story-main > .chapter-rail::-webkit-scrollbar{width:8px}
+  main.story-main > .chapter-rail::-webkit-scrollbar-track{background:rgba(61,43,31,.06);border-radius:999px}
+  main.story-main > .chapter-rail::-webkit-scrollbar-thumb{background:rgba(152,60,47,.34);border-radius:999px;border:2px solid rgba(255,249,236,.92)}
+  main.story-main > .chapter-rail{scrollbar-width:thin;scrollbar-color:rgba(152,60,47,.42) rgba(61,43,31,.06)}
+}
+@media (max-width:1049px){
+  main.story-main > .chapter-rail{
+    max-height:360px;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    scrollbar-gutter:stable;
+  }
+}
