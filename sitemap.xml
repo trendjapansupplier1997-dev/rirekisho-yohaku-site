@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://rirekisho-yohaku.pages.dev/</loc><priority>1.0</priority></url>
-  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/osaka-university-nanimono/</loc><priority>0.8</priority></url>
-  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/osaka-university-period-worker/</loc><priority>0.8</priority></url>
-  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/aichi-hikikomori-nothing-fun/</loc><priority>0.75</priority></url>
-  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/aichi-hikikomori-time-melted/</loc><priority>0.74</priority></url>
-  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/printer-sedori-dead-stock/</loc><priority>0.73</priority></url>
-  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/printer-sedori-room-collapse/</loc><priority>0.72</priority></url>
-  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/net-cafe-boki-restart/</loc><priority>0.71</priority></url>
-  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/accounting-office-reality/</loc><priority>0.70</priority></url>
-  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/electric-vocational-training/</loc><priority>0.69</priority></url>
-  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/renewable-energy-tokyo-first-site/</loc><priority>0.68</priority></url>
-  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/renewable-energy-workload/</loc><priority>0.67</priority></url>
-  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/renewable-energy-inner-anger/</loc><priority>0.66</priority></url>
-  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/renewable-energy-accident-large-project/</loc><priority>0.65</priority></url>
+  <url><loc>https://rirekisho-yohaku.pages.dev/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/osaka-university-nanimono/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/osaka-university-period-worker/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/aichi-hikikomori-nothing-fun/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/aichi-hikikomori-time-melted/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/printer-sedori-dead-stock/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/printer-sedori-room-collapse/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/net-cafe-boki-restart/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/accounting-office-reality/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/electric-vocational-training/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/renewable-energy-tokyo-first-site/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/renewable-energy-workload/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/renewable-energy-inner-anger/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/renewable-energy-accident-large-project/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://rirekisho-yohaku.pages.dev/my-yohaku/renewable-energy-leaving-tokyo/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>
