@@ -112,8 +112,8 @@ main.story-main > .chapter-rail span{
 /* v1.5: chapter rail scroll area */
 @media (min-width: 1050px){
   main.story-main > .chapter-rail{
-    max-height:min(480px,calc(100vh - 126px));
-    overflow-y:auto;
+    max-height:min(420px,calc(100vh - 126px));
+    overflow-y:scroll;
     overscroll-behavior:contain;
     scrollbar-gutter:stable;
     padding-right:10px;
