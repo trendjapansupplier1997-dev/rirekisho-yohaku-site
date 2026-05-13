@@ -131,3 +131,5 @@ main.story-main > .chapter-rail span{
     scrollbar-gutter:stable;
   }
 }
+
+/* v1.7: extra chapter added; rail scroll rules intentionally retained */
